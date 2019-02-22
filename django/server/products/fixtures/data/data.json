@@ -1,0 +1,38 @@
+[
+    {
+        "model":"products.product",
+        "pk":1,
+        "fields":{
+        "name":"Macbook pro 15th",
+        "description":"It's useless device))))",
+        "cost":"2300"
+        }
+    },
+    {
+        "model":"products.product",
+        "pk":2,
+        "fields":{
+            "name":"Macbook pro 13th",
+            "description":"It's useless device))))",
+            "cost":"1700"
+        }
+    },
+    {
+        "model":"products.product",
+        "pk":3,
+        "fields":{
+            "name":"Macbook 12th",
+            "description":"It's useless device))))",
+            "cost":"1200"
+        }
+    },
+    {
+        "model":"products.product",
+        "pk":4,
+        "fields":{
+            "name":"Macbook air 13th",
+            "description":"It's useless device))))",
+            "cost":"1100"
+        }
+    }
+]    

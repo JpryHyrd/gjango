@@ -1,0 +1,65 @@
+{% extends "server/master.html" %}
+
+
+{% block page_title %}
+Prod
+{% endblock %}
+
+{% block page_content %}
+    <div class="productsi">
+        <div class="prodhead" id="cat">
+            <h3 class="prodtext">Contacts</h3>
+        </div>
+        {% for object in object_list %}
+            <div class="products_item">
+                <span class="products_item-name">
+                    {{ object.name | title }}
+                </span>
+                <span class="products_item-description">
+                    {{ object.description }}
+                </span>
+                {% if object.cost %}
+                <span class="products_item-cost">
+                    {{ object.cost }}  
+                </span>
+                {% else %}
+                <span class="products_item-cost-empty">
+                    There is not such elements!
+                </span>
+                {% endif %}
+                <a href="/prod/{{ forloop.counter0 }}/" class="products_item-link">
+                    Link for {{ object.name | lower }}
+                </a>
+            </div>
+        {% endfor %}
+        <!--<div class="prodheadi">
+            <p class="prodtexti">Write Us</p>
+        </div>
+        <h3>{{ prodd }}</h3>
+
+
+        <form action="#" class="contform" method="post">
+            <input type="text" class="formainp" placeholder="Your name">
+            <input type="email" class="formainp" placeholder="Email">
+            <input type="text" class="formainp" placeholder="Message subject">
+            <p class="zagalovok">Your message:</p>
+            <textarea class="area" name="none" cols="40" rows="5" maxlength="1000"></textarea>
+            <input class="formainput" type="submit" value="Send">
+        </form>
+
+        <div class="prodheadi">
+            <p class="prodtexti">Contact Information</p>
+        </div>
+
+        <div class="inform">
+            <h3 class="info">Phone number - 8-800-999-700-33-40</h3>
+            <h3 class="info">E-mail - APPS@mail.ru</h3>
+            <h3 class="info">Address - Russia, Smolensk region, Safonovo, Microdistrict - 2, House - 32</h3>
+        </div>
+
+    </div>
+    <div class="rer">-->
+
+    </div>
+
+{% endblock %}

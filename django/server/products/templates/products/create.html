@@ -1,0 +1,11 @@
+{% extends "server/master.html" %}
+
+{% block page_title %}
+Create product
+{% endblock %}
+
+{% block page_content %}
+<div class="productsi">
+    {% include "server/form.html" with form=form %}
+</div>
+{% endblock %}

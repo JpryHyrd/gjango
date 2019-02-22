@@ -1,0 +1,15 @@
+{% extends "server/master.html" %}
+
+{% block page_title %}
+Delete products
+{% endblock %}
+
+{% block page_content %}
+<div class="productsi">
+    <form method="POST">
+        {% csrf_token %}
+        <h3>{{ object }} will be delete!</h3>
+        <input type="submit" name="Delete">
+    </form>
+</div>
+{% endblock %}

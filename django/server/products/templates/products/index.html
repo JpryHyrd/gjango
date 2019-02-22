@@ -1,0 +1,61 @@
+{% extends "server/master.html" %}
+
+{% block page_title %}
+Home
+{% endblock %}
+
+{% block page_content %}
+    <div class="products">
+       <div class="prodhead" id="cat">
+            <h3 class="prodtext">Our products</h3>
+        </div>
+                {% for object in page_obj %}
+                {% include 'server/product.html' with image=object.image.url name=object.name description=object.description cost=object.cost id=object.id %}
+                {% endfor %}
+
+            <!--<ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="pagenation_list_back">
+                    <a href="?page={{ page_obj.previous_page_number }}">Back</a>
+                </li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                <li class="pagelinks">
+                    <a href="?page={{ num }}">{{num}}</a>
+                </li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="pagenation_list_next">
+                    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                {% endif %}
+            </ul>-->
+            {% for object in object_list %}
+            {% include 'server/pagination.html' with page=page_obj page_range=paginator.page_range %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <button class="show-more-button" >Show More</button>
+            {% endif %}
+
+
+            <div class="category-products clearfix">
+                {% for product in products %}
+                  <div class="block">
+                    <a href="{% url 'basket:add' product.pk %}">
+                      <img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+                      <div class="text">
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.description }} </p>
+                      </div>
+                    </a>
+                  </div>
+                {% endfor %}
+            </div> 
+  
+    </div>
+
+    {% endblock %}
+

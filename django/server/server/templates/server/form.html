@@ -1,0 +1,42 @@
+<!--<div class="prodhead" id="cat">
+    <h3 class="prodtext">Category create</h3>
+</div>
+<form action="#" class="contform" method="POST">
+    {% csrf_token %}
+    {% for err in form.not_field_errors %}
+    <div class="alert-danger" role="alert">
+        <span>{{ err }}</span>
+    </div>
+    {% endfor %}
+    {% for err in field_errors %}
+        <small class="field-errors">{{ err }}</small>
+    {% endfor %}
+    <input name = "name" type="text" class="formainp" placeholder="Name">
+    <p class="zagalovok">Description:</p>
+    {% for err in field_errors %}
+        <small class="field-errors">{{ err }}</small>
+    {% endfor %}
+    <textarea class="area" name="description" cols="40" rows="5" maxlength="1000"></textarea>
+    <input class="formainput" type="submit" value="Create">
+</form>-->
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {% for err in form.not_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        <span>{{ err}}</span>
+    </div>
+    {% endfor %}
+    
+    {% for field in form %}
+    <div class="field-group">
+        <label for="{{ field.name }}">{{ field.label }}</label>
+        {{ field }}
+
+        {% for err in field.errors %}
+        <small class="field__error">{{ err }}</small>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <input type="submit">
+</form>

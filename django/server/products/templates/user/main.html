@@ -1,0 +1,25 @@
+{% extends "server/master.html" %}
+
+{% block page_title %}
+Registration
+{% endblock %}
+
+{% block page_content %}
+
+
+{% if user.is_authenticated %}
+<a href="logout" class="logout">Logout ({{user.username}})</a>
+{% else %}
+<a href="register" class="register">Registration</a>
+<a href="login" class="login">Login</a>
+{% endif %}
+
+{% for i in humans %}
+<p>{{elem.name}}</p>
+<p>{{elem.surname}}</p>
+<p>{{elem.company}}</p>
+{% endfor %}
+
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+<div class="mac">
+<div class="products_itemer">
+        <a href="{% url 'detail' pk=id %}" class="products_item-link">
+        <img src="{{ image }}" alt="{{ name }}" class="products__item-image" width="250px" height="250px">
+        <h2 class="products_item-name">
+           {{ name | title }}
+        </h2>
+        </a>
+        <!--<span class="products_item-description">
+            ____{{ object.description }}____
+        </span>-->
+        {% if cost %}
+        <h4 class="products_item-cost">
+            Price : {{ cost }} $ 
+        </h4> 
+        <a href=""></a>
+        {% else %}
+        <span class="products_item-cost-empty">
+            There is not such elements!
+        </span>
+        {% endif %}
+        <!--<a href="{% url 'detail' pk=object.id %}" class="products_item-link">
+            Link for {{ object.name | lower }}
+        </a>-->
+</div>
+</div>

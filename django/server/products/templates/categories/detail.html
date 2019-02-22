@@ -1,0 +1,37 @@
+{% extends "server/master.html" %}
+
+{% block page_title %}
+Ane
+{% endblock %}
+
+{% block page_content %}
+    <div class="productsi">
+        <div class="prodhead" id="cat">
+            <h3 class="prodtext">Contacts</h3>
+        </div>
+            <div class="productsanding">
+                <h1 class="products_name">
+                    {{ inst.name | title }}
+                </h1>
+                <span class="products_description">
+                    {{ inst.description }}
+                </span>
+                {% if inst.cost %}
+                <span class="products_cost">
+                    {{ inst.cost }}
+                </span>
+                {% endif %}
+            </div>
+            <br>
+            <div class='fdfd'>
+                {% for product in products %}
+                {% include 'server/product.html' with image=product.image.url name=product.name description=product.description cost=product.cost id=product.id %}
+                {% endfor %}
+            </div>
+            {% for object in products %}
+            {% include 'server/pagination.html' with page=products page_range=products.paginator.page_range %}
+            {% endfor %}
+
+    </div>
+
+{% endblock %}

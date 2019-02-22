@@ -1,0 +1,28 @@
+{% extends "server/master.html" %}
+
+{% block page_title %}
+Ane
+{% endblock %}
+
+{% block page_content %}
+    <div class="productsi">
+        <div class="prodhead" id="cat">
+            <h3 class="prodtext">Contacts</h3>
+        </div>
+            <div class="productsanding">
+                <h1 class="products_name">
+                    {{ inst.name | title }}
+                </h1>
+                <span class="products_description">
+                    {{ inst.description }}
+                </span>
+                {% if inst.cost %}
+                <span class="products_cost">
+                    {{ inst.cost }}
+                </span>
+                {% endif %}
+            </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'server/master.html' %}
+
+{% load static %}
+
+{% block page_static %}
+{% endblock %}
+
+{% block page_content %}
+<div class="productsi">
+    <div class="prodhead" id="cat">
+        <h3 class="prodtext">Registration</h3>
+    </div>
+    <div class="qwerty">
+    {% include 'server/form.html' with form=form %}
+    </div>
+</div>
+{% endblock %}

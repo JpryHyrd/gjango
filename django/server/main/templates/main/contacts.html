@@ -1,0 +1,48 @@
+{% extends "server/master.html" %}
+
+
+{% block page_title %}
+Contacts
+{% endblock %}
+
+{% block page_content %}
+    <div class="productsi">
+
+        <div class="prodhead" id="cat">
+            <h3 class="prodtext">Contacts</h3>
+        </div>
+
+        <div class="prodheadi">
+            <p class="prodtexti">Write Us</p>
+        </div>
+
+        <form action="#" class="contform" method="post">
+            <input type="text" class="formainp" placeholder="Your name">
+            <input type="email" class="formainp" placeholder="Email">
+            <input type="text" class="formainp" placeholder="Message subject">
+            <p class="zagalovok">Your message:</p>
+            <textarea class="area" name="none" cols="40" rows="5" maxlength="1000"></textarea>
+            <input class="formainput" type="submit" value="Send">
+        </form>
+
+        <div class="prodheadi">
+            <p class="prodtexti">Contact Information</p>
+        </div>
+
+        <div class="inform">
+            {% for i in contacts %}
+            <h3 class="info">{{ i }}</h3>
+            {% endfor %}
+            <div class="map">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5abcd26e2489b51d0f30e039e0472e410e1244d2dffd24f8cc7a5126f3fd5b6e&amp;width=800&amp;height=386&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+        </div>
+
+    </div>
+    <div class="rer">
+
+    </div>
+
+</div>
+{% endblock %}
+

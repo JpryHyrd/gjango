@@ -1,0 +1,46 @@
+{% extends "server/master.html" %}
+
+{% block page_title %}
+Home
+{% endblock %}
+
+{% block page_content %}
+    <div class="products">
+       <div class="prodhead" id="cat">
+            <h3 class="prodtext">Our products</h3>
+        </div>
+                {% for object in object_list %}
+            <div class="mac">
+            <div class="products_itemer">
+                <a href="{% url 'detail' pk=object.id %}" class="products_item-link">
+                <img src="/../static/products/img/fon.jpg" alt="none" class="imagegege" width="250px" height="250px">
+                <h2 class="products_item-name">
+                   {{ object.name | title }}
+                </h2>
+                </a>
+                <!--<span class="products_item-description">
+                    ____{{ object.description }}____
+                </span>-->
+                <a href=""></a>
+                <!--<a href="{% url 'detail' pk=object.id %}" class="products_item-link">
+                    Link for {{ object.name | lower }}
+                </a>-->
+            </div>
+            </div>
+        {% endfor %}
+            <div class="category-products clearfix">
+                {% for product in products %}
+                  <div class="block">
+                    <a href="{% url 'basket:add' product.pk %}">
+                      <img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+                      <div class="text">
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.description }} </p>
+                      </div>
+                    </a>
+                  </div>
+                {% endfor %}
+            </div> 
+  
+    </div>
+    {% endblock %}

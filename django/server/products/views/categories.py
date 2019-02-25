@@ -6,10 +6,36 @@ import json
 from products.models import Product, Category
 from products.forms import CategoryForm, CategoryModelForm
 from django.urls import reverse, reverse_lazy
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.views.generic import (ListView, DetailView, CreateView, UpdateView, DeleteView)
 from django.core.paginator import Paginator
 
+ 
+class RestCategoryListView(ListView):
+    model = Category
+
+    def serialize_object_list(self, queryset):
+        return list(
+            map(
+                lambda itm: {
+                    'id': itm.id,
+                    'name': itm.name
+                },
+                queryset
+            )
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super(RestCategoryListView, self).get_context_data(**kwargs)
+        object_list = context.get('object_list')
+
+        data = {}
+        data['results'] = self.serialize_object_list(object_list)
+
+        return data
+
+    def render_to_response(self, context, **response_kwargs):
+        return JsonResponse(context)
 
 
 class CategoryListView(ListView):

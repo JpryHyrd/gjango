@@ -1,4 +1,4 @@
-from django.urls import path, include
+"""from django.urls import path, include
 #from products.views import contacts_prod, index_prod
 #from products.views import (product_detail_view, index_prod)
 from products.views import category_create_view, CategoryListView, CategoryDetailView, CategoryCreateView, CategoryUdateView, CategoryDeleteView
@@ -23,4 +23,15 @@ urlpatterns = [
 
     #path('accounts/', include('allauth.urls')),
 
+]"""
+from django.urls import path
+from products.views import (
+    RestCategoryListView
+)
+
+
+app_name = 'rest_categories'
+
+urlpatterns = [
+    path('', RestCategoryListView.as_view(), name='list'),
 ]

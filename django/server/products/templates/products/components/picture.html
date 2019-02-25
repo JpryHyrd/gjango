@@ -1,0 +1,11 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'products/picture.css' %}">
+
+<div class="image-wrapper">
+    {% if image %}
+    <img class="image" src="{{ image.url }}" alt="">
+    {% else %}
+    <img class="image image_empty" src="{% static 'products/images/empty.png' %}" alt="empty">
+    {% endif %}
+</div>

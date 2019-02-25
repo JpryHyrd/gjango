@@ -93,10 +93,11 @@
                 </div>
         </div>
     </div>
-
+    <div>
+    <ul class="categories"></ul>
     {% block page_content %}
     {% endblock %}
-
+    </div>
     <div class="banerr">
         <div class="teg">
             <i class="fab fa-apple fa-5x"></i>
@@ -288,5 +289,33 @@
 </div>
 {% block page_js %}
 {% endblock %}
+
+    <script src="{% static 'server/js/categories.js' %}"></script>
+    <script>
+        const categories = document.querySelector('.categories');
+
+        const categoriesUrl = '{% url "rest_categories:list" %}';
+
+        const renderCategoryList = () => {
+            
+            fetch(categoriesUrl)
+                .then(response => response.json())
+                .then(
+                    data => {
+                        data.results.reduce(
+                            (val, itm, idx) => val += renderCategory(itm)
+                        )
+                    }
+                )
+                .then(
+                    renderedString => {
+                        categories.innerHTML = renderedString
+                    }
+                )
+        }
+
+        document.addEventListener("DOMContentLoaded", renderCategoryList);
+    </script>
+
 </body>
 </html>

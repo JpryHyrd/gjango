@@ -1,8 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.urls import reverse
+from django.contrib.auth.views import (
+    LoginView, LogoutView
+)
+from django.views.generic import CreateView
+from django.urls import reverse, reverse_lazy
 
+from .models import AccountUser
 from .forms import LoginForm, RegistrationForm
+
 
 def login_view(request):
     form = LoginForm()
@@ -30,6 +36,25 @@ def login_view(request):
         {'form': form}
     )
 
+
+class AccountLogoutView(LogoutView):
+    template_name = 'accounts/logout.html'
+
+
+class AccountLoginView(LoginView):
+    template_name = 'accounts/login.html'
+
+
+class AccountRegistrationView(CreateView):
+    model = AccountUser
+    form_class = RegistrationForm
+    template_name = 'accounts/registration.html'
+    success_url = reverse_lazy('list')
+
+    def post(self, *args, **kwargs):
+        respose = super(AccountRegistrationView, self).post(*args, **kwargs)
+        login(self.request, self.object)
+        return respose
 
 def registration_view(request):
     form = RegistrationForm()

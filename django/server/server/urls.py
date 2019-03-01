@@ -17,18 +17,30 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework.routers import DefaultRouter
+
+from products.viewset import (
+    CategoryViewSet, ProductViewSet
+)
 from products.views import (
     index_prod
 )
 
-router = [
-    path('prod/', include('products.routes')),
-    path('categories/', include('products.routes.categories')),
 
+router = DefaultRouter()
+router.register('products', ProductViewSet)
+router.register('categories', CategoryViewSet)
+
+
+router_django = [
+    path('products/', include('products.routes')),
+    path('categories/', include('products.routes.categories')),
 ]
 
 urlpatterns = [
-    path('api/', include(router)),
+#  path('api/', include(router)),
+    path('api/', include(router.urls)),
+    path('django-api/', include(router_django)),
     path('admin/', admin.site.urls),
     path("prod/", include("products.urls")),
     path("categories/", include("products.urls.categories")),

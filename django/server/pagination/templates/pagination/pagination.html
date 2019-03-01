@@ -1,0 +1,23 @@
+<ul class="pagination">
+    {% if page_obj.has_previous %}
+    <li class="pagination__link_prev">
+        <a href="?page={{ page_obj.previous_page_number }}">
+            Back
+        </a>
+    </li>
+    {% endif %}
+    {% for num in paginator.page_range %}
+    <li class="pagination__link">
+        <a href="?page={{ num }}">
+            {{ num }}
+        </a>
+    </li>
+    {% endfor %}
+    {% if page_obj.has_next %}
+    <li class="pagination__link_next">
+        <a href="?page={{ page_obj.next_page_number }}">
+            Farther
+        </a>
+    </li>
+    {% endif %}
+</ul>

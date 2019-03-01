@@ -1,4 +1,6 @@
 {% extends "server/master.html" %}
+{% load static %}
+
 
 {% block page_title %}
 Ane
@@ -28,10 +30,9 @@ Ane
                 {% include 'server/product.html' with image=product.image.url name=product.name description=product.description cost=product.cost id=product.id %}
                 {% endfor %}
             </div>
-            {% for object in products %}
-            {% include 'server/pagination.html' with page=products page_range=products.paginator.page_range %}
-            {% endfor %}
+         
 
     </div>
+
 
 {% endblock %}

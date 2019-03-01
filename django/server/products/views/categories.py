@@ -48,7 +48,7 @@ class CategoryDetailView(DetailView):
         template_name = 'categories/detail.html'
 #       context_object_name = 'inst'
 
-        def get_context_data(self, **kwargs):
+"""        def get_context_data(self, **kwargs):
                 key = self.context_object_name if self.context_object_name else "object"
                 obj = kwargs.get(key)
                 products = obj.product_set.all()
@@ -56,7 +56,7 @@ class CategoryDetailView(DetailView):
                 paginator = Paginator(products, 1)
                 page_obj = paginator.get_page(page)
 
-                return{ key:obj, "products":page_obj }
+                return{ key:obj, "products":page_obj }"""
 
 
 class CategoryCreateView(CreateView):
